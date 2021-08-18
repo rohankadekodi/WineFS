@@ -21,7 +21,7 @@ WineFS is built by modifying [PMFS](https://github.com/linux-pmfs/pmfs) by Intel
 
 ## Artifact Evaluation
 
-The [Experiments page](https://github.com/rohanakadekodi/WineFS/blob/main/Experiments.md)
+The [Experiments page](https://github.com/rohankadekodi/WineFS/blob/main/Experiments.md)
 has a list of experiments evaluating WineFS vs ext4-DAX, NOVA and xfs-DAX. The summary is that WineFS outperforms the other file systems on the memory-mapped workloads (RocksDB and LMDB) by up-to 2x, while matching or outperforming other file systems on the other POSIX workloads (Filebench and WiredTiger). Please see the paper for more details.
 
 ## System Requirements

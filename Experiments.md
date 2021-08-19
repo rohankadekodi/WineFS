@@ -32,7 +32,27 @@ Follow steps mentioned in [LMDB](https://github.com/rohankadekodi/WineFS/blob/ma
 
 ```
 cd scripts/
-sudo ./run_mmap_applications.sh <run-id> <result-dir> <dev (/dev/pmem0)> <mnt (/mnt/pmem0)>
+sudo ./run_mmap_applications.sh <start-run-id> <num-runs> <result-dir> /dev/pmem0 /mnt/pmem0
+cd ..
+
+# For example: sudo ./run_mmap_applications.sh 10 3 ../results/ /dev/pmem0 /mnt/pmem0 
+(This will run RocksDB and LMDB for all aged file systems for 3 runs (Run ID 10, 11, 12) and the results will be stored in the results/ directory)
+```
+
+Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. Also, please keep in mind that RocksDB Run C workload has high variance, all others have low variance. For reliable results of Run C, it is advisable to run the RocksDB benchmarks multiple times.
+
+For parsing results, use the following scripts:
+```
+cd scripts/
+python3 parse_rocksdb.py <number-of-filesystems> <fs1> <fs2> ... <num-runs> <start-run-id> <result-dir> <output-csv-file>
+cd ..
+
+# For example: python3 parse_rocksdb.py 4 winefs nova ext4 xfs 3 10 ../results/ ../results/rocksdb_output.csv
+(This will parse all the rocksdb output files and generate a CSV file)
+
+# For example: python3 parse_lmdb.py 4 winefs nova ext4 xfs 3 10 ../results/ ../results/lmdb_output.csv
+(This will parse all the LMDB output files and generate a CSV file)
+
 ```
 
 ![YCSB-RocksDB-LMDB](https://github.com/rohankadekodi/WineFS/blob/main/graphs/rocksdb-ycsb-lmdb.png)
@@ -50,9 +70,29 @@ Follow steps mentioned in [Filebench](https://github.com/rohankadekodi/WineFS/tr
 
 Follow steps mentioned in [WiredTiger](https://github.com/rohankadekodi/WineFS/tree/main/WiredTiger)
 
-#### Run system-call applications
+#### Run POSIX applications
 
 ```
 cd scripts/
-sudo ./run_syscall_applications.sh <run-id> <result-dir> <dev (/dev/pmem0)> <mnt (/mnt/pmem0)>
+sudo ./run_syscall_applications.sh <start-run-id> <num-runs> <result-dir> /dev/pmem0 /mnt/pmem0
+cd ..
+
+# For example: sudo ./run_syscall_applications.sh 10 3 ../results/ /dev/pmem0 /mnt/pmem0 
+(This will run Filebench and WiredTiger for all fresh file systems for 3 runs (Run ID 10, 11, 12) and the results will be stored in the results/ directory)
+```
+
+Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. 
+
+For parsing results, use the following scripts:
+```
+cd scripts/
+python3 parse_filebench.py <number-of-filesystems> <fs1> <fs2> ... <num-runs> <start-run-id> <result-dir> <output-csv-file>
+cd ..
+
+# For example: python3 parse_filebench.py 4 winefs nova ext4 xfs 3 10 ../results/ ../results/rocksdb_output.csv
+(This will parse all the Filebench output files and generate a CSV file)
+
+# For example: python3 parse_wiredtiger.py 4 winefs nova ext4 xfs 3 10 ../results/ ../results/lmdb_output.csv
+(This will parse all the WiredTiger output files and generate a CSV file)
+
 ```

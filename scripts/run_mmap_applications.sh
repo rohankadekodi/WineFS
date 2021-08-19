@@ -14,7 +14,7 @@ agedImagesDir=$4
 dev=$5
 mnt=$6
 
-rocksdbDir=../RocksDB
+rocksDbDir=../RocksDB
 ycsbWorkloadDir=../RocksDB/ycsb_workloads
 lmdbDir=../LMDB
 
@@ -27,5 +27,6 @@ do
 		./mount_fs.sh $fs $dev $mnt $agedImagesDir 0
 		./rocksdb_suite.sh $fs $mnt $rocksDbDir $ycsbWorkloadDir $resultDir $i
 		./lmdb_suite.sh $fs $lmdbDir/dbbench/bin $mnt $resultDir $i
+		sleep 30
 	done
 done

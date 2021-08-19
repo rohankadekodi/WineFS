@@ -6,6 +6,15 @@
 - \>= 500GiB Intel Optane DC PM module in each socket
 - Support for clwb instructions (Intel cascadelake processor)
 
+**Note: We have all the setup and benchmarks ready to run for the evaluators on the provided machine. For running experiments and generating results, run the following script:**
+```
+$ sudo ./artifact_evaluation_experiments.sh <start-run-id> <num-runs> <result-dir> /home/sdp/images /dev/pmem0 /mnt/pmem0
+
+# For example: ./artifact_evaluation_experiments.sh 1 1 /home/sdp/results /home/sdp/images /dev/pmem0 /mnt/pmem0
+(This will run all the experiments for one run and results will be stored in /home/sdp/results)
+```
+**For setting up the kernel and benchmarks, and regenerating workloads, the evaluators can follow the steps below (optional)**
+
 ## Compile Kernel
 **Note: The machine that we have provided already contains the Linux-5.1 kernel. This step can be skipped**
 

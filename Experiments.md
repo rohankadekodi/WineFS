@@ -7,12 +7,12 @@
 - Support for clwb instructions (Intel cascadelake processor)
 
 ## Compile Kernel
-Note: The machine that we have provided already contains the Linux-5.1 kernel. This step can be skipped
+**Note: The machine that we have provided already contains the Linux-5.1 kernel. This step can be skipped**
 
 Follow steps mentioned in [Linux-5.1](https://github.com/rohankadekodi/WineFS/tree/main/Linux-5.1)
 
 ## Setup Persistent Memory partition
-Note: The machine that we have provided already contains the right partitions, this step can be skipped.
+**Note: The machine that we have provided already contains the right partitions, this step can be skipped**
 
 ```
 $ sudo apt-get install ndctl
@@ -31,8 +31,9 @@ The list of benchmarks and the major performance results presented in the paper 
 We evaluate the performance of **aged** file systems on 2 major memory-mapped applications mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
 
 #### Aging Process
+**Note: This step takes too long to complete, and should be skipped for artifact evaluation**
 
-We age the images of all file systems using the [Geriatrix](https://github.com/saurabhkadekodi/geriatrix) aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have uploaded the aged images of file systems in the `Images/` directory.
+We age the images of all file systems using the [Geriatrix](https://github.com/saurabhkadekodi/geriatrix) aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have provided aged images of the file-systems in the directory: `/mnt/ssd/saurabh/artifact-evaluation/images/`. Please provide the path of this directory to the `run_mmap_applications.sh` script mentioned below.
 
 #### Setup RocksDB with YCSB
 Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB)
@@ -44,10 +45,10 @@ Follow steps mentioned in [LMDB](https://github.com/rohankadekodi/WineFS/blob/ma
 
 ```
 cd scripts/
-sudo ./run_mmap_applications.sh <start-run-id> <num-runs> <result-dir> /dev/pmem0 /mnt/pmem0
+sudo ./run_mmap_applications.sh <start-run-id> <num-runs> <result-dir> <aged-image-directory> /dev/pmem0 /mnt/pmem0
 cd ..
 
-# For example: sudo ./run_mmap_applications.sh 10 3 ../results/ /dev/pmem0 /mnt/pmem0 
+# For example: sudo ./run_mmap_applications.sh 10 3 ../results /mnt/ssd/saurabh/artifact-evaluation/images /dev/pmem0 /mnt/pmem0 
 (This will run RocksDB and LMDB for all aged file systems for 3 runs (Run ID 10, 11, 12) and the results will be stored in the results/ directory)
 ```
 

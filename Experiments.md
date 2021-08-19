@@ -82,7 +82,7 @@ cd ..
 ```
 
 ![MMAP Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/aged-perf-rocksdb-lmdb.png)
-<p align="center"> Figure 1 - YCSB suite on RocksDB and LMDB fillseqbatch </p>
+<p align="center"> SOSP Paper Figure 7. Performance on aged file systems </p>
 
 
 ### POSIX Applications
@@ -124,4 +124,4 @@ cd ..
 ```
 
 ![POSIX-Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/clean-perf-filebench-wt.png)
-<p align="center"> Figure 2 - Filebench suite, WiredTiger suite and PostgreSQL TPC-B workloads </p>
+<p align="center"> SOSP Paper Figure 9. Performance of applications using POSIX system calls on clean file systems. </p>

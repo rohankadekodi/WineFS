@@ -80,3 +80,5 @@ fbcode/
 fbcode
 buckifier/*.pyc
 buckifier/__pycache__
+
+ycsb_workloads/

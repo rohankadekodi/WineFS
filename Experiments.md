@@ -44,8 +44,7 @@ Follow steps mentioned in [Filebench](https://github.com/rohankadekodi/WineFS/tr
 
 #### Setup WiredTiger
 
-1. Compile and install WiredTiger: `cd scripts/wiredtiger; sudo ./compile_wiredtiger.sh <num-threads>; cd ../..` -- This will compile and install WiredTiger in the system
-2. Compile benchmarking suite: `cd scripts/wiredtiger; ./compile_benchmark.sh; cd ../..` -- This will compile the benchmarking suite for WiredTiger
+Follow steps mentioned in [WiredTiger](https://github.com/rohankadekodi/WineFS/tree/main/WiredTiger)
 
 #### Run system-call applications
 

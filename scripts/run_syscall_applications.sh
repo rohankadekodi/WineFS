@@ -22,7 +22,7 @@ for ((i = $startRunId ; i < $((startRunId + numRuns)) ; i++))
 do
 	for fs in duofs nova ext4 xfs
 	do
-		./mount_fs.sh $fs $dev $mnt 1
+		./mount_fs.sh $fs $dev $mnt null 1
 		./filebench_suite.sh $fs $filebenchDir/filebench $mnt $resultDir $i
 		./wiredtiger_suite.sh $fs $wiredTigerDir/leveldb_wt $mnt $resultDir $i
 	done

@@ -20,7 +20,7 @@ We evaluate the performance of **aged** file systems on 2 major memory-mapped ap
 
 #### Aging Process
 
-We age the images of all file systems using the Geriatrix aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have uploaded the aged images of file systems in the `Images/` directory.
+We age the images of all file systems using the [Geriatrix](https://github.com/saurabhkadekodi/geriatrix) aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have uploaded the aged images of file systems in the `Images/` directory.
 
 #### Setup RocksDB with YCSB
 Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB)
@@ -55,7 +55,7 @@ cd ..
 
 ```
 
-![YCSB-RocksDB-LMDB](https://github.com/rohankadekodi/WineFS/blob/main/graphs/aged-perf-rocksdb-lmdb.png)
+![MMAP Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/aged-perf-rocksdb-lmdb.png)
 <p align="center"> Figure 1 - YCSB suite on RocksDB and LMDB fillseqbatch </p>
 
 
@@ -96,3 +96,6 @@ cd ..
 (This will parse all the WiredTiger output files and generate a CSV file)
 
 ```
+
+![POSIX-Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/clean-perf-filebench-wt.png)
+<p align="center"> Figure 2 - Filebench suite, WiredTiger suite and PostgreSQL TPC-B workloads </p>

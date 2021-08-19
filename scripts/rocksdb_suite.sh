@@ -16,7 +16,7 @@ run=$6
 
 curDir=`readlink -f ./`
 
-mkdir -p $resultDirFull
+mkdir -p $resultDir
 
 echo "$fs ROCKSDB Run $run"
 cd $curDir

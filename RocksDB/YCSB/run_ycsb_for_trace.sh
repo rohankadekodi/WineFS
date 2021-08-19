@@ -2,7 +2,7 @@
 
 set -x
 
-ycsb_workloads_folder=../RocksDB/ycsb_workloads
+ycsb_workloads_folder=../ycsb_workloads
 
 record_count=50000000
 

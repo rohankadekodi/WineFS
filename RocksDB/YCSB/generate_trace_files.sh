@@ -18,7 +18,7 @@ workload_dir=$8
 
 rm command_file.sh
 
-cd ../RocksDB/ycsb_workloads/
+cd ../ycsb_workloads/
 
 for load_workload in a e
 do
@@ -70,3 +70,4 @@ do
 done
 
 chmod +x command_file.sh
+./command_file.sh

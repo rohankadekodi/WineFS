@@ -9,6 +9,8 @@ WineFS is built by modifying [PMFS](https://github.com/linux-pmfs/pmfs) by Intel
 (d) Crash recovery
 (e) hybrid data atomicity mechanism: 500 LOC
 
+**Note: Artifact Evaluation details are in the [Experiments page](https://github.com/rohankadekodi/WineFS/blob/main/Experiments.md)**
+
 ## Contents
 
 1. `Linux-5.1/` contains the Linux 5.1 kernel with WineFS, NOVA, PMFS as loadable modules and ext4-DAX, xfs-DAX as built-in modules

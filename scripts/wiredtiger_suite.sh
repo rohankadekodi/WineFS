@@ -14,13 +14,14 @@ resultDir=$4/$fs/wiredtiger
 run=$5
 
 curDir=`readlink -f ./`
+resultDirFull=`readlink -f $resultDir`
 
-mkdir -p $resultDir
+mkdir -p $resultDirFull
 
 for workload in fillrandom,readrandom 
 do
 	echo "$fs WIREDTIGER workload $workload Run $run"
 	cd $curDir
-	./wiredtiger_workload.sh $fs $wtDir $workload $mnt $resultDir $run
+	./wiredtiger_workload.sh $fs $wtDir $workload $mnt $resultDirFull $run
 	cd $curDir
 done

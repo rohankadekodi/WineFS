@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -ne 5 ]; then
-	echo "Usage: ./run_all_applications.sh <start-run-id> <num-runs> <result-dir> <dev> <mnt>"
+	echo "Usage: sudo ./run_all_applications.sh <start-run-id> <num-runs> <result-dir> <dev> <mnt>"
 	exit 1
 fi
 

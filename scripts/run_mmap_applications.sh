@@ -14,15 +14,15 @@ agedImagesDir=$4
 dev=$5
 mnt=$6
 
-rocksDbDir=../RocksDB
-ycsbWorkloadDir=../RocksDB/ycsb_workloads
-lmdbDir=../LMDB
+rocksDbDir=`readlink -f ../RocksDB`
+ycsbWorkloadDir=`readlink -f ../RocksDB/ycsb_workloads`
+lmdbDir=`readlink -f ../LMDB`
 
 ./cpu_scaling_governer.sh
 
 for ((i = $startRunId ; i < $((startRunId + numRuns)) ; i++))
 do
-	for fs in duofs nova ext4 xfs
+	for fs in nova ext4 xfs duofs
 	do
 		./mount_fs.sh $fs $dev $mnt $agedImagesDir 0
 		./rocksdb_suite.sh $fs $mnt $rocksDbDir $ycsbWorkloadDir $resultDir $i

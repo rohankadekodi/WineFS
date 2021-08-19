@@ -13,8 +13,10 @@ resultDir=$3
 dev=$4
 mnt=$5
 
-filebenchDir=../Filebench
-wiredTigerDir=../WiredTiger
+filebenchDir=`readlink -f ../Filebench`
+wiredTigerDir=`readlink -f ../WiredTiger`
+curDir=`readlink -f ./`
+resultDirFull=`readlink -f $resultDir`
 
 ./cpu_scaling_governer.sh
 
@@ -27,11 +29,12 @@ do
 			./mount_fs.sh $fs $dev $mnt null 1
 			cd $curDir
 			echo "$fs FILEBENCH workload $workload Run $run"
-			./filebench_workload.sh $fs $filebenchDir/filebench $mnt $workload $resultDir/$fs/filebench $i
+			./filebench_workload.sh $fs $filebenchDir $mnt $workload $resultDirFull/$fs/filebench $i
 			cd $curDir
 			sleep 30
 		done
 
+		./mount_fs.sh $fs $dev $mnt null 1
 		./wiredtiger_suite.sh $fs $wiredTigerDir/leveldb_wt $mnt $resultDir $i
 		sleep 30
 	done

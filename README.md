@@ -11,7 +11,7 @@ WineFS is built by modifying [PMFS](https://github.com/linux-pmfs/pmfs) by Intel
 
 ## Contents
 
-1. `linux-5.1/` contains the Linux 5.1 kernel with WineFS, NOVA, PMFS as loadable modules and ext4-DAX, xfs-DAX as built-in modules
+1. `Linux-5.1/` contains the Linux 5.1 kernel with WineFS, NOVA, PMFS as loadable modules and ext4-DAX, xfs-DAX as built-in modules
 2. `dependencies/` contains packages and scripts to resolve dependencies
 3. `rocksdb/` contains RocksDB source code and benchmarks
 4. `filebench/` contains the Filebench source code and benchmarks

@@ -55,7 +55,7 @@ cd ..
 
 ```
 
-![YCSB-RocksDB-LMDB](https://github.com/rohankadekodi/WineFS/blob/main/graphs/rocksdb-ycsb-lmdb.png)
+![YCSB-RocksDB-LMDB](https://github.com/rohankadekodi/WineFS/blob/main/graphs/aged-perf-rocksdb-lmdb.png)
 <p align="center"> Figure 1 - YCSB suite on RocksDB and LMDB fillseqbatch </p>
 
 

@@ -18,7 +18,7 @@ Note: The machine that we have provided already contains the right partitions, t
 $ sudo apt-get install ndctl
 $ sudo ndctl disable-namespace namespace0.0
 $ sudo ndctl destroy-namespace namespace0.0
-$ sudo ndctl create-namespace --mode=fsdax --size=504G --align=2097152
+$ sudo ndctl create-namespace --mode=fsdax --size=504G --align=2097152 # This creates the /dev/pmem0 device on socket 0 of the PM machine.
 ```
 
 ## Performance Benchmarks

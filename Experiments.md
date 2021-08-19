@@ -63,7 +63,8 @@ cd ..
 
 Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. Also, please keep in mind that RocksDB Run C workload has high variance, all others have low variance. For statistically accurate results of Run C, it is advisable to get the average of multiple runs.
 
-For parsing results, use the following scripts:
+#### Parse results
+
 ```
 cd scripts/
 python3 parse_rocksdb.py <number-of-filesystems> <fs1> <fs2> ... <num-runs> <start-run-id> <result-dir> <output-csv-file>
@@ -105,7 +106,7 @@ cd ..
 
 Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. 
 
-For parsing results, use the following scripts:
+#### Parse results
 ```
 cd scripts/
 python3 parse_filebench.py <number-of-filesystems> <fs1> <fs2> ... <num-runs> <start-run-id> <result-dir> <output-csv-file>

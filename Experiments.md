@@ -7,7 +7,19 @@
 - Support for clwb instructions (Intel cascadelake processor)
 
 ## Compile Kernel
+Note: The machine that we have provided already contains the Linux-5.1 kernel. This step can be skipped
+
 Follow steps mentioned in [Linux-5.1](https://github.com/rohankadekodi/WineFS/tree/main/Linux-5.1)
+
+## Setup Persistent Memory partition
+Note: The machine that we have provided already contains the right partitions, this step can be skipped.
+
+```
+$ sudo apt-get install ndctl
+$ sudo ndctl disable-namespace namespace0.0
+$ sudo ndctl destroy-namespace namespace0.0
+$ sudo ndctl create-namespace --mode=fsdax --size=504G --align=2097152
+```
 
 ## Performance Benchmarks
 We evaluate the performance of WineFS against ext4-DAX, NOVA and xfs-DAX. We do not include SplitFS in the evaluation, as the performance of SplitFS is similar to ext4-DAX for the memory-mapped applications as SplitFS does not optimize memory-mapped applications, which is the main use-case for WineFS. We do not include PMFS because PMFS is not able to finish the process of aging after even a week, due to poor metadata indexing structures.

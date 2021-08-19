@@ -22,9 +22,7 @@ We evaluate the performance of aged file systems on 2 major memory-mapped worklo
 Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB/README.md)
 
 #### Setup LMDB with fillseqbatch
-
-1. Compile & install LMDB: `cd scripts/lmdb; sudo ./compile_lmdb.sh <num-threads>; cd ../..` -- This will compile and install LMDB in the system
-2. Compile dbbench: `cd scripts/lmdb; ./compile_dbbench.sh <num-threads>; cd ../..` -- This will compile dbbench suite for LMDB
+Follow steps mentioned in [LMDB](https://github.com/rohankadekodi/WineFS/blob/main/LMDB/README.md)
 
 #### Run memory-mapped applications
 

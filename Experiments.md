@@ -31,9 +31,9 @@ The list of benchmarks and the major performance results presented in the paper 
 We evaluate the performance of **aged** file systems on 2 major memory-mapped applications mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
 
 #### Aging Process
-**Note: This step takes too long to complete, and should be skipped for artifact evaluation**
+**Note: Aging takes too long so we provide you with aged images in `/home/sdp/images/`. Evaluators needn't perform aging since it can take days.**
 
-We age the images of all file systems using the [Geriatrix](https://github.com/saurabhkadekodi/geriatrix) aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have provided aged images of the file-systems in the directory: `/mnt/ssd/saurabh/artifact-evaluation/images/`. Please provide the path of this directory to the `run_mmap_applications.sh` script mentioned below.
+We age the images of all file systems using the [Geriatrix](https://github.com/saurabhkadekodi/geriatrix) aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age.
 
 #### Setup RocksDB with YCSB
 Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB)
@@ -48,11 +48,11 @@ cd scripts/
 sudo ./run_mmap_applications.sh <start-run-id> <num-runs> <result-dir> <aged-image-directory> /dev/pmem0 /mnt/pmem0
 cd ..
 
-# For example: sudo ./run_mmap_applications.sh 10 3 ../results /mnt/ssd/saurabh/artifact-evaluation/images /dev/pmem0 /mnt/pmem0 
+# For example: sudo ./run_mmap_applications.sh 10 3 ../results /home/sdp/images /dev/pmem0 /mnt/pmem0 
 (This will run RocksDB and LMDB for all aged file systems for 3 runs (Run ID 10, 11, 12) and the results will be stored in the results/ directory)
 ```
 
-Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. Also, please keep in mind that RocksDB Run C workload has high variance, all others have low variance. For reliable results of Run C, it is advisable to run the RocksDB benchmarks multiple times.
+Note: Please make sure that the 500 GB PM partition is created on /dev/pmem0, and that the directory /mnt/pmem0 exists. Also, please keep in mind that RocksDB Run C workload has high variance, all others have low variance. For statistically accurate results of Run C, it is advisable to get the average of multiple runs.
 
 For parsing results, use the following scripts:
 ```

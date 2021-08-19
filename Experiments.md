@@ -18,6 +18,10 @@ The list of benchmarks and the major performance results presented in the paper 
 
 We evaluate the performance of aged file systems on 2 major memory-mapped applications mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
 
+#### Aging Process
+
+We age the images of all file systems using the Geriatrix aging framework and the Agrawal aging profile such that 75% of the file systems are utilized. Each file system takes approximately 2 days to age. We have uploaded the aged images of file systems in the `Images/` directory.
+
 #### Setup RocksDB with YCSB
 Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB)
 

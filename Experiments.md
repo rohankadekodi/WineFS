@@ -10,7 +10,7 @@
 WineFS currently works with the Linux 5.1 kernel. The source of the kernel is present in `linux-5.1/` directory. Steps:
 1. Install Kernel Dependencies:
 ```
-$ sudo apt install flex bison libelf-dev libssl-dev kexec-tools 
+$ sudo apt-get install flex bison libelf-dev libssl-dev kexec-tools 
 ```
 2. Generate Kernel Config:
 ```
@@ -45,8 +45,14 @@ We evaluate the performance of aged file systems on 2 major memory-mapped worklo
 
 #### Setup RocksDB with YCSB
 
-1. Install RocksDB dependencies: `cd scripts/rocksdb; ./install_dependencies.sh; cd ../..` -- This will install RocksDB dependencies
-2. Compile RocksDB: `cd scripts/rocksdb; ./compile_rocksdb.sh <num-threads>; cd ../..` -- This will compile RocksDB
+1. Install RocksDB dependencies: 
+```
+$ sudo apt-get install libgflags-dev
+```
+2. Compile RocksDB: 
+```
+$ make release -j <num-threads>
+```
 3. Install YCSB dependencies: `cd scripts/ycsb; ./install_dependencies.sh; cd ../..` -- This will install YCSB dependencies
 4. Compile YCSB: `cd scripts/ycsb; ./compile_ycsb.sh; cd ../..` -- This will compile YCSB
 5. Generate workloads: All the YCSB workload files (Load A, E and Run A, B, C, D, E, F) are present in the `rocksdb/workloads` directory. For generating own YCSB workload files, use the script: `cd scripts/ycsb; ./generate_ycsb_workloads.sh; cd ../..`. This script will automatically replace the workload files in `rocksdb/workloads` with the newly generated workload files

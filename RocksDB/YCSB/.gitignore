@@ -4,5 +4,5 @@ core
 *swp
 *cscope*
 
-!ycsb/core
-!ycsb/tracerecorder
+tracerecorder/target
+binding-parent/datastore-specific-descriptor/target/

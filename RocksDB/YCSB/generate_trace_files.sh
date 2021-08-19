@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$#" -ne 8 ]; then
-    echo "Illegal number of parameters; Please provide num_threads, rec_val, a_op_val, bd_op_val, c_op_val, f_op_val, e_op_val workload_dir  as the parameter;"
+if [ "$#" -ne 7 ]; then
+    echo "Illegal number of parameters; Please provide num_threads, rec_val, a_op_val, bd_op_val, c_op_val, f_op_val, e_op_val  as the parameter;"
     exit 1
 fi
 
@@ -18,6 +18,8 @@ workload_dir=$8
 
 rm command_file.sh
 
+cd ../RocksDB/ycsb_workloads/
+
 for load_workload in a e
 do
     num_lines=`wc -l ./load${load_workload}_${rec_val} | awk '{ print $1 }'`
@@ -31,7 +33,7 @@ do
         sed_var=${sed_var}$(($file_num*$lines_in_each_thread))
         sed_var=${sed_var}p
         sed_var=${sed_var}"' "
-        sed_var=${sed_var}"./load${load_workload}_${rec_val} > $workload_dir/load${load_workload}_${rec_val}_${file_num}_${num_threads}"
+        sed_var=${sed_var}"./load${load_workload}_${rec_val} > ./load${load_workload}_${rec_val}_${file_num}_${num_threads}"
         start_line=$(($start_line+$lines_in_each_thread))
         echo ${sed_var} >> command_file.sh
     done
@@ -61,7 +63,7 @@ do
         sed_var=${sed_var}$(($file_num*$lines_in_each_thread))
         sed_var=${sed_var}p
         sed_var=${sed_var}"' "
-        sed_var=${sed_var}"./run${run_workload}_${rec_val}_${op_val} > $workload_dir/run${run_workload}_${rec_val}_${op_val}_${file_num}_${num_threads}"
+        sed_var=${sed_var}"./run${run_workload}_${rec_val}_${op_val} > ./run${run_workload}_${rec_val}_${op_val}_${file_num}_${num_threads}"
         start_line=$(($start_line+$lines_in_each_thread))
         echo ${sed_var} >> command_file.sh
     done

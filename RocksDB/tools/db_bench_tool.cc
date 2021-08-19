@@ -3261,17 +3261,19 @@ class Benchmark {
       }
     }
 
-    CompactRangeOptions options;
-    options.change_level = true;
-    options.target_level = -1;
-    options.allow_write_stall = true;
-    fprintf(stdout, "Compacting at the end of run\n");
-    Status compact_status = db_.db->CompactRange(options, nullptr,nullptr);
-    if (!compact_status.ok()) {
-	    fprintf(stdout, "status is not okay for compaction\n");
-	    exit(1);
+    if (!FLAGS_use_existing_db) {
+	    CompactRangeOptions options;
+	    options.change_level = true;
+	    options.target_level = -1;
+	    options.allow_write_stall = true;
+	    fprintf(stdout, "Compacting at the end of run\n");
+	    Status compact_status = db_.db->CompactRange(options, nullptr,nullptr);
+	    if (!compact_status.ok()) {
+		    fprintf(stdout, "status is not okay for compaction\n");
+		    exit(1);
+	    }
+	    fprintf(stdout, "Compaction successful at the end of run\n");
     }
-    fprintf(stdout, "Compaction successful at the end of run\n");
 
 #endif  // ROCKSDB_LITE
 

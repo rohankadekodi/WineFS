@@ -41,6 +41,7 @@
 /wiredtiger_ext.h
 /wt
 Makefile
+!leveldb_wt/Makefile
 Makefile.in
 build_posix/config.log
 build_posix/config.status

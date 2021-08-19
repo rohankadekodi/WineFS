@@ -9,7 +9,7 @@ set -e
 
 startRunId=$1
 numRuns=$2
-resultDir=$3
+resultDir=`readlink -f $3`
 agedImagesDir=$4
 dev=$5
 mnt=$6

@@ -15,11 +15,10 @@ resultDir=$5/$fs/rocksdb
 run=$6
 
 curDir=`readlink -f ./`
-resultDirFull=`readlink -f $resultDir`
 
 mkdir -p $resultDirFull
 
 echo "$fs ROCKSDB Run $run"
 cd $curDir
-./rocksdb_workload.sh $run $fs $mnt $rocksDir $workloadDir $resultDirFull 50M 50M 50M 50M 50M 10M 8
+./rocksdb_workload.sh $run $fs $mnt $rocksDir $workloadDir $resultDir 50M 50M 50M 50M 50M 10M 8
 cd $curDir

@@ -14,14 +14,13 @@ resultDir=$4/$fs/lmdb
 run=$5
 
 curDir=`readlink -f ./`
-resultDirFull=`readlink -f $resultDir`
 
-mkdir -p $resultDirFull
+mkdir -p $resultDir
 
 for workload in fillseqbatch 
 do
 	echo "$fs LMDB workload $workload Run $run"
 	cd $curDir
-	./lmdb_workload.sh $fs $lmdbDir $mnt $workload $resultDirFull $run
+	./lmdb_workload.sh $fs $lmdbDir $mnt $workload $resultDir $run
 	cd $curDir
 done

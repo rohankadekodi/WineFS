@@ -9,14 +9,13 @@ set -e
 
 startRunId=$1
 numRuns=$2
-resultDir=$3
+resultDir=`readlink -f $3`
 dev=$4
 mnt=$5
 
 filebenchDir=`readlink -f ../Filebench`
 wiredTigerDir=`readlink -f ../WiredTiger`
 curDir=`readlink -f ./`
-resultDirFull=`readlink -f $resultDir`
 
 ./cpu_scaling_governer.sh
 
@@ -29,7 +28,7 @@ do
 			./mount_fs.sh $fs $dev $mnt null 1
 			cd $curDir
 			echo "$fs FILEBENCH workload $workload Run $run"
-			./filebench_workload.sh $fs $filebenchDir $mnt $workload $resultDirFull/$fs/filebench $i
+			./filebench_workload.sh $fs $filebenchDir $mnt $workload $resultDir/$fs/filebench $i
 			cd $curDir
 			sleep 30
 		done

@@ -12,11 +12,10 @@ WineFS is built by modifying [PMFS](https://github.com/linux-pmfs/pmfs) by Intel
 ## Contents
 
 1. `Linux-5.1/` contains the Linux 5.1 kernel with WineFS, NOVA, PMFS as loadable modules and ext4-DAX, xfs-DAX as built-in modules
-2. `dependencies/` contains packages and scripts to resolve dependencies
-3. `rocksdb/` contains RocksDB source code and benchmarks
-4. `filebench/` contains the Filebench source code and benchmarks
-5. `lmdb/` contains the LMDB source code and benchmarks
-6. `wiredtiger/` contains the WiredTiger source code and benchmarks
+2. `RocksDB/` contains RocksDB source code and YCSB benchmarking suite
+4. `Filebench/` contains the Filebench source code and benchmarks
+5. `LMDB/` contains the LMDB source code and benchmarks
+6. `WiredTiger/` contains the WiredTiger source code and benchmarks
 7. `scripts/` contains scripts to compile and run workloads and kernel
 
 ## Artifact Evaluation
@@ -32,21 +31,14 @@ has a list of experiments evaluating WineFS vs ext4-DAX, NOVA and xfs-DAX. The s
 4. Baremetal machine (Not a VM)
 5. Intel Optane DC Persistent Memory module
 
-## Dependencies
-5.1 kernel: Installing the linux kernel 5.1 involves installing libelf-dev, libssl-dev, flex and bison. For ubuntu, please run the script `cd dependencies; ./kernel_deps.sh; cd ..`
+## Setup Kernel
+Follow steps in [Linux-5.1](https://github.com/rohankadekodi/WineFS/tree/main/Linux-5.1) to install the Linux 5.1 kernel which has WineFS as a loadable module.
 
 ## Limitations
 WineFS is under active development. Although there are no known bugs, we welcome any bug reports or bug fixes. 
 
 ## Testing
 [PJD POSIX Test Suite](https://www.tuxera.com/community/posix-test-suite/) that tests primarily the metadata operations was run on WineFS successfully. WineFS passes all tests. 
-
-**Running the Test Suite**  
-To run tests:  
-```
-$ make test
-```
-Tip: Redirect stderr for less verbose output: e.g `make test 2>/dev/null`
 
 ## Contributors
 

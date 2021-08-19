@@ -6,33 +6,8 @@
 - \>= 500GiB Intel Optane DC PM module in each socket
 - Support for clwb instructions (Intel cascadelake processor)
 
-## Compile & Install Kernel
-WineFS currently works with the Linux 5.1 kernel. The source of the kernel is present in `linux-5.1/` directory. Steps:
-1. Install Kernel Dependencies:
-```
-$ sudo apt-get install flex bison libelf-dev libssl-dev kexec-tools 
-```
-2. Generate Kernel Config:
-```
-$ cp CONFIG_WINEFS .config
-$ make olddefconfig
-```
-3. Compile Kernel:
-```
-$ make -j <num-threads> # If there are errors while compiling, please try compiling with gcc-8
-$ sudo make modules_install
-$ sudo make install
-```
-4. Boot up in the new kernel:
-```
-$ sudo kexec -l /boot/vmlinuz-5.1.0+ --initrd=/boot/initrd.img-5.1.0+ --reuse-cmdline
-$ sudo kexec -e # This will boot the new kernel in the machine, the ssh connection will be lost temporarily and must be reconnected
-```
-5. Load WineFS and NOVA modules:
-```
-$ sudo modprobe winefs
-$ sudo modprobe nova
-```
+## Compile Kernel
+Follow steps mentioned in [Linux-5.1](https://github.com/rohankadekodi/WineFS/blob/main/Linux-5.1/README.md)
 
 ## Performance Benchmarks
 We evaluate the performance of WineFS against ext4-DAX, NOVA and xfs-DAX. We do not include SplitFS in the evaluation, as the performance of SplitFS is similar to ext4-DAX for the memory-mapped applications, which is the main use-case for WineFS. We do not include PMFS because PMFS is not able to finish the process of aging after even a week, due to poor metadata indexing structures.
@@ -44,18 +19,7 @@ The list of benchmarks and the major performance results presented in the paper 
 We evaluate the performance of aged file systems on 2 major memory-mapped workloads mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
 
 #### Setup RocksDB with YCSB
-
-1. Install RocksDB dependencies: 
-```
-$ sudo apt-get install libgflags-dev
-```
-2. Compile RocksDB: 
-```
-$ make release -j <num-threads>
-```
-3. Install YCSB dependencies: `cd scripts/ycsb; ./install_dependencies.sh; cd ../..` -- This will install YCSB dependencies
-4. Compile YCSB: `cd scripts/ycsb; ./compile_ycsb.sh; cd ../..` -- This will compile YCSB
-5. Generate workloads: All the YCSB workload files (Load A, E and Run A, B, C, D, E, F) are present in the `rocksdb/workloads` directory. For generating own YCSB workload files, use the script: `cd scripts/ycsb; ./generate_ycsb_workloads.sh; cd ../..`. This script will automatically replace the workload files in `rocksdb/workloads` with the newly generated workload files
+Follow steps mentioned in [RocksDB](https://github.com/rohankadekodi/WineFS/blob/main/RocksDB/README.md)
 
 #### Setup LMDB with fillseqbatch
 

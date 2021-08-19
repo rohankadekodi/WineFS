@@ -205,18 +205,18 @@ setup_expt()
     run_workload c $runc_files $setup
     sleep 5
 
-    # run_workload f $runf_files $setup
-    # sleep 5
+    run_workload f $runf_files $setup
+    sleep 5
 
-    # run_workload d $rund_files $setup
-    # sleep 5
+    run_workload d $rund_files $setup
+    sleep 5
 
-    # sudo rm -rf $pmemDir/rocksdbtest-1000
-    # load_workload e $loade_files $setup
-    # sleep 5
+    sudo rm -rf $pmemDir/rocksdbtest-1000
+    load_workload e $loade_files $setup
+    sleep 5
 
-    # run_workload e $rune_files $setup
-    # sleep 5
+    run_workload e $rune_files $setup
+    sleep 5
     sudo rm -rf $pmemDir/rocksdbtest-1000
 }
 

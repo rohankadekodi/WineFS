@@ -16,7 +16,7 @@ The list of benchmarks and the major performance results presented in the paper 
 
 ### Memory-mapped applications
 
-We evaluate the performance of aged file systems on 2 major memory-mapped applications mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
+We evaluate the performance of **aged** file systems on 2 major memory-mapped applications mentioned in the paper: RocksDB running with the entire YCSB suite and LMDB with the fillseqbatch workload.
 
 #### Aging Process
 
@@ -41,7 +41,7 @@ sudo ./run_mmap_applications.sh <run-id> <result-dir> <dev (/dev/pmem0)> <mnt (/
 
 ### POSIX Applications
 
-We evaluate the performance of fresh file systems on 2 major system-call workloads mentioned in the paper: Filebench suite with varmail, fileserver, webserver and webproxy; WiredTiger with fillrandom and readrandom.
+We evaluate the performance of **fresh** file systems on 2 major system-call workloads mentioned in the paper: Filebench suite with varmail, fileserver, webserver and webproxy; WiredTiger with fillrandom and readrandom.
 
 #### Setup Filebench
 Follow steps mentioned in [Filebench](https://github.com/rohankadekodi/WineFS/tree/main/Filebench)

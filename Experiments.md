@@ -6,6 +6,8 @@
 - \>= 500GiB Intel Optane DC PM module in each socket
 - Support for clwb instructions (Intel cascadelake processor)
 
+We evaluate the performance of WineFS against ext4-DAX, NOVA and xfs-DAX. We do not include SplitFS in the evaluation, as the performance of SplitFS is similar to ext4-DAX for the memory-mapped applications as SplitFS does not optimize memory-mapped applications, which is the main use-case for WineFS. We do not include PMFS because PMFS is not able to finish the process of aging after even a week, due to poor metadata indexing structures.
+
 **Note: We have all the setup and benchmarks ready to run for the evaluators on the provided machine. For running experiments and generating results, run the following script:**
 ```
 $ sudo ./artifact_evaluation_experiments.sh <start-run-id> <num-runs> <result-dir> /home/sdp/images /dev/pmem0 /mnt/pmem0
@@ -33,7 +35,6 @@ $ sudo ndctl create-namespace --mode=fsdax --size=504G --align=2097152 # This cr
 ```
 
 ## Performance Benchmarks
-We evaluate the performance of WineFS against ext4-DAX, NOVA and xfs-DAX. We do not include SplitFS in the evaluation, as the performance of SplitFS is similar to ext4-DAX for the memory-mapped applications as SplitFS does not optimize memory-mapped applications, which is the main use-case for WineFS. We do not include PMFS because PMFS is not able to finish the process of aging after even a week, due to poor metadata indexing structures.
 
 The list of benchmarks and the major performance results presented in the paper are as follows:
 

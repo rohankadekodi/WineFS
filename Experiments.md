@@ -26,7 +26,7 @@ Results can be parsed by following steps in [parse-MMAP-results](https://github.
 ![MMAP Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/aged-perf-rocksdb-lmdb.png)
 <p align="center"> SOSP Paper Figure 7. Performance on aged file systems </p>
 
-Our evaluation scripts for benchmarking memory-mapped applications is as follows. This script will load a pre-aged file system image and then execute the benchmark. **NOTE: file system aging takes days, so we have provided pre-aged images to aid in easy evaluation.**
+Our evaluation scripts for benchmarking memory-mapped applications are as follows. This script will load a pre-aged file system image and then execute the benchmark. **NOTE: file system aging takes days, so we have provided pre-aged images to aid in easy evaluation.**
 
 ```
 cd scripts/
@@ -54,16 +54,18 @@ cd ..
 
 ```
 
+**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.***
+
 The output of this experiment shows the performance of all file systems on memory-mapped applications. The script also outputs the number of page faults incurred by each file system --- WineFS should see the lowest number of page faults --- showing that it used the highest number of hugepages.
 
 ---
 
-2. **WineFS does not slow down POSIX (system call) applications.** WineFS uses a bunch of optimizations (fine-grained journaling, faster indexing structures, etc.) to for expediting POSIX application performance. This results in POSIX applications atop WineFS performing as good as, or better than their performance on competitive file systems (NOTE: we show POSIX performance on clean file systems because they are unaffected by aging). We use the Filebench suite with varmail, fileserver, webserver and webproxy; WiredTiger with fillrandom and readrandom to show performance of POSIX applications. The corresponding result in the paper is Figure 9, which is also shown below for convenience:
+2. **WineFS does not slow down POSIX (system call) applications.** WineFS uses a bunch of optimizations (fine-grained journaling, faster indexing structures, etc.) for expediting POSIX application performance. This results in POSIX applications atop WineFS performing as good as, or better than their performance on competitive file systems (NOTE: we show POSIX performance on clean file systems because they are unaffected by aging). We use the Filebench suite with varmail, fileserver, webserver and webproxy; WiredTiger with fillrandom and readrandom to show performance of POSIX applications. The corresponding result in the paper is Figure 9, which is also shown below for convenience:
 
 ![POSIX-Applications](https://github.com/rohankadekodi/WineFS/blob/main/graphs/clean-perf-filebench-wt.png)
 <p align="center"> SOSP Paper Figure 9. Performance of applications using POSIX system calls on clean file systems. </p>
 
-Our evaluation scripts for benchmarking memory-mapped applications is as follows:
+Our evaluation scripts for benchmarking POSIX applications is as follows:
 
 ```
 cd scripts/
@@ -76,7 +78,7 @@ cd ..
 
 **Time taken: Each file-system takes roughly 45 minutes for one run (40 minutes for Filebench suite and 5 minutes for WiredTiger)** Note: Please make sure that the 500 GB PM partition is created on /dev/pmem1, and that the directory /mnt/pmem0 exists. 
 
-The parsing scripts for the POSIX applications are shown below. They will produce CSV files similar to the memory-mapped experiment described above.
+The parsing scripts for the POSIX applications can be executed as shown below. They will produce CSV files similar to the memory-mapped experiment described above.
 
 ```
 cd scripts/
@@ -89,6 +91,8 @@ cd ..
 # For example: python3 parse_wiredtiger.py 4 winefs nova ext4 xfs 3 10 ../results/ ../results/lmdb_output.csv
 (This will parse all the WiredTiger output files and generate a CSV file)
 ```
+
+**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.***
 
 The output of this experiment shows the performance of all file systems on popular POSIX applications. Across the board, WineFS performs equal to, or better than the competitive file systems.
 

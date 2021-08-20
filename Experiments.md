@@ -39,6 +39,8 @@ cd ..
 
 **Time taken: Each file-system takes roughly 40 minutes for one run (15 minutes for loading aged image, 20 minutes for RocksDB and 5 minutes for LMDB).** Note: Please make sure that the 500 GB PM partition is created on /dev/pmem1, and that the directory /mnt/pmem0 exists. Also, please keep in mind that RocksDB workloads (especially Run C) have variance. For statistically accurate results, it is advisable to get the average of multiple runs.
 
+#### Parse Results
+
 The output needs to be parsed using the following command, which will generate CSV files that contain the final results. Those CSV files can then be manually inspected, or uploaded to any spreadsheet or plotting utility to visualize the results via a plot. 
 
 ```
@@ -78,6 +80,7 @@ cd ..
 
 **Time taken: Each file-system takes roughly 45 minutes for one run (40 minutes for Filebench suite and 5 minutes for WiredTiger)** Note: Please make sure that the 500 GB PM partition is created on /dev/pmem1, and that the directory /mnt/pmem0 exists. 
 
+#### Parse Results
 The parsing scripts for the POSIX applications can be executed as shown below. They will produce CSV files similar to the memory-mapped experiment described above.
 
 ```
@@ -92,7 +95,7 @@ cd ..
 (This will parse all the WiredTiger output files and generate a CSV file)
 ```
 
-**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.***
+**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.**
 
 The output of this experiment shows the performance of all file systems on popular POSIX applications. Across the board, WineFS performs equal to, or better than the competitive file systems.
 

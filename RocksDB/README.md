@@ -11,6 +11,7 @@ $ make release -j <num-threads>
 3. Install YCSB dependencies:
 ```
 $ sudo apt-get install maven
+$ sudo apt-get install python2
 ```
 4. Compile YCSB:
 ```

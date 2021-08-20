@@ -16,7 +16,7 @@ $ sudo ./artifact_evaluation_experiments.sh <start-run-id> <num-runs> <result-di
 # For example: ./artifact_evaluation_experiments.sh 1 1 /home/sdp/results /home/sdp/images /dev/pmem1 /mnt/pmem0
 (This will run all the experiments for one run and results will be stored in /home/sdp/results)
 ```
-Total time taken by the script for 1 run = approximately 6 hours. (Please read note provided [here](https://github.com/rohankadekodi/WineFS/blob/main/Experiments.md#run-memory-mapped-applications)).
+Total time taken by the script for 1 run = approximately 6 hours. (Please make sure that the 500 GB PM partition is created on /dev/pmem1, and that the directory /mnt/pmem0 exists; more notes in the sections below).
 
 Results can be parsed by following steps in [parse-MMAP-results](https://github.com/rohankadekodi/WineFS/blob/main/Experiments.md#parse-results) and [parse-POSIX-results](https://github.com/rohankadekodi/WineFS/blob/main/Experiments.md#parse-results-1)
 
@@ -56,7 +56,7 @@ cd ..
 
 ```
 
-**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.***
+**Note: the absolute performance numbers may be different than the ones submitted in the paper. This can be attributed to firmware changes that are deployed on the NVDIMMs, along with their wear-and-tear over time. But, the relative improvements over other file systems should be the same.**
 
 The output of this experiment shows the performance of all file systems on memory-mapped applications. The script also outputs the number of page faults incurred by each file system --- WineFS should see the lowest number of page faults --- showing that it used the highest number of hugepages.
 

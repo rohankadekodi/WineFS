@@ -7,5 +7,5 @@ fi
 
 set -e
 
-# ./run_mmap_applications.sh $1 $2 $3 $4 $5 $6
+./run_mmap_applications.sh $1 $2 $3 $4 $5 $6
 ./run_syscall_applications.sh $1 $2 $3 $5 $6

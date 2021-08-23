@@ -279,8 +279,7 @@ static int pmfs_init_blockmap_from_inode(struct super_block *sb)
 			/* FIXME: Assume NR_CPUS not change */
 			free_list = pmfs_get_free_list(sb, cpuid);
 
-			if (free_list == NULL || free_list->huge_aligned_block_free_tree == NULL ||
-					free_list->unaligned_block_free_tree == NULL)
+			if (free_list == NULL)
 				PMFS_ASSERT(0);
 
 			if (blknode->range_low % 512 == 0 &&
@@ -314,8 +313,7 @@ out:
 	for (i = 0; i < sbi->cpus; i++) {
 		free_list = pmfs_get_free_list(sb, i);
 
-		if (free_list == NULL || free_list->huge_aligned_block_free_tree == NULL ||
-				free_list->unaligned_block_free_tree == NULL)
+		if (free_list == NULL)
 			PMFS_ASSERT(0);
 
 		temp = rb_first(&free_list->unaligned_block_free_tree);

@@ -257,10 +257,15 @@ static int pmfs_init_blockmap_from_inode(struct super_block *sb)
 			if (blocknode_ctr == total_blocknodes)
 				break;
 
+			if (curr_p == NULL)
+				PMFS_ASSERT(0);
+
 			entry = (struct pmfs_range_node_lowhigh *)pmfs_get_block(sb, curr_p);
 			blknode = pmfs_alloc_blocknode(sb);
+
 			if (blknode == NULL)
 				PMFS_ASSERT(0);
+
 			blknode->range_low = le64_to_cpu(entry->range_low);
 			blknode->range_high = le64_to_cpu(entry->range_high);
 
@@ -273,6 +278,11 @@ static int pmfs_init_blockmap_from_inode(struct super_block *sb)
 
 			/* FIXME: Assume NR_CPUS not change */
 			free_list = pmfs_get_free_list(sb, cpuid);
+
+			if (free_list == NULL || free_list->huge_aligned_block_free_tree == NULL ||
+					free_list->unaligned_block_free_tree == NULL)
+				PMFS_ASSERT(0);
+
 			if (blknode->range_low % 512 == 0 &&
 			    blknode->range_high - blknode->range_low + 1 == 512) {
 				ret = pmfs_insert_blocktree(&free_list->huge_aligned_block_free_tree, blknode);
@@ -303,6 +313,10 @@ out:
 
 	for (i = 0; i < sbi->cpus; i++) {
 		free_list = pmfs_get_free_list(sb, i);
+
+		if (free_list == NULL || free_list->huge_aligned_block_free_tree == NULL ||
+				free_list->unaligned_block_free_tree == NULL)
+			PMFS_ASSERT(0);
 
 		temp = rb_first(&free_list->unaligned_block_free_tree);
 		if (temp) {

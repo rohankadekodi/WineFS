@@ -13,7 +13,7 @@ We evaluate the performance of WineFS against ext4-DAX, NOVA and xfs-DAX. We do 
 $ cd scripts/
 $ sudo ./artifact_evaluation_experiments.sh <start-run-id> <num-runs> <result-dir> /home/sdp/images /dev/pmem1 /mnt/pmem0
 
-# For example: ./artifact_evaluation_experiments.sh 1 1 /home/sdp/results /home/sdp/images /dev/pmem1 /mnt/pmem0
+# For example: sudo ./artifact_evaluation_experiments.sh 1 1 /home/sdp/results /home/sdp/images /dev/pmem1 /mnt/pmem0
 (This will run all the experiments for one run and results will be stored in /home/sdp/results)
 ```
 Total time taken by the script for 1 run = approximately 6 hours. (Please make sure that the 500 GB PM partition is created on /dev/pmem1, and that the directory /mnt/pmem0 exists; more notes in the sections below).

@@ -42,6 +42,9 @@ WineFS is under active development. Although there are no known bugs, we welcome
 ## Testing
 [PJD POSIX Test Suite](https://www.tuxera.com/community/posix-test-suite/) that tests primarily the metadata operations was run on WineFS successfully. WineFS passes all tests. 
 
+## License
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+
 ## Contributors
 
 1. [Rohan Kadekodi](https://github.com/rohankadekodi), UT Austin

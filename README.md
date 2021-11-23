@@ -40,13 +40,13 @@ Follow steps in [Linux-5.1](https://github.com/rohankadekodi/WineFS/tree/main/Li
 WineFS in the **default mode** ensures metadata consistency, data consistency and synchronous system-calls (Similar to NOVA, Strata and SplitFS-strict). WineFS in this mode can be mounted using:
 
 ```
-$ sudo mount -t winefs -o init,strict /dev/pmem0 /mnt/pmem0`
+$ sudo mount -t winefs -o init,strict /dev/pmem0 /mnt/pmem0
 ```
 
 WineFS also contains a **relaxed mode** that provides metadata consistency and synchronous system-calls (Similar to NOVA-Relaxed, PMFS, ext4-DAX, xfs-DAX, SplitFS-Sync). WineFS in this mode can be mounted using:
 
 ```
-$ sudo mount -t winefs -o init /dev/pmem0 /mnt/pmem0`
+$ sudo mount -t winefs -o init /dev/pmem0 /mnt/pmem0
 ```
 
 ## Limitations
